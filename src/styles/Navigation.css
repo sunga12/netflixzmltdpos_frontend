@@ -1,0 +1,19 @@
+
+
+header {
+  text-align: left;
+  background-color: rgb(244, 244, 244);
+  padding-left: 1rem;
+}
+.navbar {
+  display: flex;
+  margin: auto;
+  padding: 0;
+  justify-content: flex-end;
+}
+
+li {
+  text-decoration: none;
+  list-style-type: none;
+  margin: 0.5rem 1rem;
+}
