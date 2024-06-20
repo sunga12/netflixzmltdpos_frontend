@@ -12,6 +12,9 @@ const Navigation = () => {
     <nav>
       <ul className="navbar">
         <li>
+          NEW ORDER
+        </li>
+        <li>
           ORDERS
         </li>
         <li>

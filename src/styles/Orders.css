@@ -1,0 +1,36 @@
+
+.orders-tables {
+  display: flex;
+  width: 90%;
+  margin: auto;
+  justify-content: space-between;
+}
+
+.home-search {
+  display: flex;
+  width: 90%;
+  margin: 1rem auto;
+  justify-content: space-between;
+}
+
+.search-bar {
+  border: 2px solid black;
+  border-radius: 15px;
+  width: 40%;
+}
+
+.all-orders {
+  width: 50%;
+}
+
+.order-details {
+  width: 40%;
+}
+
+.all-orders > tr:hover {
+  background-color: rgb(224, 224, 224);
+}
+
+.all-orders > tr:active {
+  background-color: rgb(169, 169, 169);
+}
