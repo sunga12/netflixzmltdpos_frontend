@@ -1,0 +1,60 @@
+
+
+.user-main {
+ display: flex;
+ flex-direction: column;
+}
+
+.back-btn {
+  width: 5%;
+  margin: 1rem;
+
+}
+
+.products {
+  display: flex;
+  height: 60vh;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 1rem;
+  width: 65%;
+  border: 1px solid black;
+}
+
+.products-grid > div {
+  border: 1px solid grey ;
+  margin: 0.3rem;
+  padding: 0.1rem 1rem 3rem 0.1rem;
+  text-align: left;
+}
+
+.products-grid > div:hover {
+  background-color: rgb(242, 242, 242);
+}
+
+.summary {
+  text-align: center;
+  width: 35%;
+  border: 1px solid black;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.total {
+  width: 90%;
+  margin: 1rem auto;
+  border-top: 1px solid grey;
+  text-align: right;
+}
+
+.pay-btns {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem auto;
+  width: 90%;
+}
