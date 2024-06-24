@@ -1,0 +1,32 @@
+.inventory {
+  display: flex;
+ justify-content: space-between;
+ height: 75vh;
+ width: 90%;
+ margin: 1rem auto;
+
+}
+
+.left {
+  /* border: 1px solid green; */
+  width: 40%;
+}
+
+.left > table {
+  width: 100%;
+}
+
+.product-btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.right {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.right > table {
+  margin: 0;
+}
