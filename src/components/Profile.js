@@ -1,10 +1,11 @@
 import React from 'react'
 import '../styles/Profile.css'
 
-const Profile = () => {
+const Profile = ({
+  id, username, role, fullname,
+}) => {
   return (
     <div>
-      
       <h1>Profile</h1>
       
       <section className="profile">
@@ -12,13 +13,14 @@ const Profile = () => {
           <div>
             Profile Pic
             <div>
-            Username
+              Username:
+            {username}
           </div>
           </div>
           <div>
             <ul>
-              <li>Fullname: Full Name</li>
-              <li>Role: Role</li>
+              <li>Fullname: {fullname}</li>
+              <li>Role: {role}</li>
             </ul>
             <button>
               EDIT PROFILE
