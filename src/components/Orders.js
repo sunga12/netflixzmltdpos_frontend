@@ -1,7 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../styles/Orders.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { getOrders } from '../redux/orders/ordersSlice';
+import { useParams } from 'react-router-dom';
 
 const Orders = () => {
+  
+  const { orders, isLoading } = useSelector((state) => state.orders);
+  const dispatch = useDispatch();
+
+  const userId = useParams();
+  console.log(userId.userId);
+  const user_num = userId.userId;
+
+  useEffect(() => {
+    dispatch(getOrders(user_num));
+  }, [dispatch, user_num]);
+  
+  if (isLoading) return <div>Loading...</div>;
+
   return (
     <div >
       <h1>Orders</h1>
@@ -9,104 +26,35 @@ const Orders = () => {
         <button>BACK</button>
         <div className="search-bar">search bar</div>
       </div>
-  
+
       <section className="orders-tables">
         <table className="all-orders">
-        <thead>
-              <tr>
-                  <th>Date/Time</th>
-                  <th>Amount</th>
-                  <th>User</th>
-              </tr>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>User ID</th>
+              <th>Timestamp</th>
+            </tr>
           </thead>
+          {orders.map((order) => {
+            return ( 
               <tr>
                 <td>
-                21/05/2024
+                {order.date}
                 </td>
                 <td>
-                  15
+                {order.total}
                 </td>
                 <td>
-                  Yancy24
+                  {order.user_id}
+                </td>
+                <td>
+                  {order.created_at}
                 </td>
               </tr>
-              <tr>
-                <td>
-                21/05/2024
-                </td>
-                <td>
-                  15
-                </td>
-                <td>
-                  Yancy24
-                </td>
-              </tr>
-              <tr>
-                <td>
-                21/05/2024
-                </td>
-                <td>
-                  15
-                </td>
-                <td>
-                  Yancy24
-                </td>
-              </tr>
-              <tr>
-                <td>
-                21/05/2024
-                </td>
-                <td>
-                  15
-                </td>
-                <td>
-                  Yancy24
-                </td>
-              </tr>
-              <tr>
-                <td>
-                21/05/2024
-                </td>
-                <td>
-                  15
-                </td>
-                <td>
-                  Yancy24
-                </td>
-              </tr>
-              <tr>
-                <td>
-                21/05/2024
-                </td>
-                <td>
-                  15
-                </td>
-                <td>
-                  Yancy24
-                </td>
-              </tr>
-              <tr>
-                <td>
-                21/05/2024
-                </td>
-                <td>
-                  15
-                </td>
-                <td>
-                  Yancy24
-                </td>
-              </tr>
-              <tr>
-                <td>
-                21/05/2024
-                </td>
-                <td>
-                  15
-                </td>
-                <td>
-                  Yancy24
-                </td>
-              </tr>
+                )
+            })}
         </table>
         <section className="order-details">
           <table>
