@@ -14,7 +14,6 @@ export const getOrders = createAsyncThunk("orders/getOrders", async (user_id, th
   try {
     const response = await axios.get(`${API_URL}/users/${user_id}/orders`,
     );
-    console.log(response);
     return response.data;
   } catch (error) {
     return thunkAPI.rejectWithValue("Error fetching Orders")

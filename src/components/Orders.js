@@ -10,7 +10,6 @@ const Orders = () => {
   const dispatch = useDispatch();
 
   const userId = useParams();
-  console.log(userId.userId);
   const user_num = userId.userId;
 
   useEffect(() => {
