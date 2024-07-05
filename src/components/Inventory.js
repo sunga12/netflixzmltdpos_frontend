@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../styles/Inventory.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { getProducts } from '../redux/products/productsSlice';
 
 const Inventory = () => {
+  
+  const { products, isLoading } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProducts());
+  }, [dispatch]);
+
+  if (isLoading) return <div>Loading...</div>;
+  
   return (
     <div>
       <h1>Inventory</h1>
@@ -17,97 +29,33 @@ const Inventory = () => {
             <tr>
                 <th>Name</th>
                 <th>Price</th>
+                <th>Category</th>
                 <th>Current Level</th>
+                <th>Reorder Level</th>
             </tr>
         </thead>
+        {products.map((product) => {
+            return ( 
               <tr>
                 <td>
-                21/05/2024
+                  {product.name}
                 </td>
                 <td>
-                  15
+                  {product.price}
                 </td>
                 <td>
-                  20
+                  {product.stocklevel}
+                </td>
+                <td>
+                  {product.reorderlevel}
+                </td>
+                <td>
+                  {product.category}
                 </td>
               </tr>
-              <tr>
-                <td>
-                21/05/2024
-                </td>
-                <td>
-                  15
-                </td>
-                <td>
-                  20
-                </td>
-              </tr>
-              <tr>
-                <td>
-                21/05/2024
-                </td>
-                <td>
-                  15
-                </td>
-                <td>
-                  20
-                </td>
-              </tr>
-              <tr>
-                <td>
-                21/05/2024
-                </td>
-                <td>
-                  15
-                </td>
-                <td>
-                  20
-                </td>
-              </tr>
-              <tr>
-                <td>
-                21/05/2024
-                </td>
-                <td>
-                  15
-                </td>
-                <td>
-                  20
-                </td>
-              </tr>
-              <tr>
-                <td>
-                21/05/2024
-                </td>
-                <td>
-                  15
-                </td>
-                <td>
-                  20
-                </td>
-              </tr>
-              <tr>
-                <td>
-                21/05/2024
-                </td>
-                <td>
-                  15
-                </td>
-                <td>
-                  20
-                </td>
-              </tr>
-              <tr>
-                <td>
-                21/05/2024
-                </td>
-                <td>
-                  15
-                </td>
-                <td>
-                  20
-                </td>
-              </tr>
+                )
+            })}
+              
         </table>
         <div className="product-btns">
           <button>

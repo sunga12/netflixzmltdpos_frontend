@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import '../styles/Profile.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUserbyId, getUsers } from '../redux/users/usersSlice';
+import { getUserbyId } from '../redux/users/usersSlice';
 import { useParams } from 'react-router-dom';
 
 const Profile = () => {
@@ -12,7 +12,6 @@ const Profile = () => {
   const user_num = userId.userId;
   
   useEffect(() => {
-    dispatch(getUsers());
     dispatch(getUserbyId(user_num));
   }, [dispatch, user_num]);
 
