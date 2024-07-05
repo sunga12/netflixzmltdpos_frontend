@@ -1,20 +1,24 @@
 import React, { useEffect } from 'react'
 import '../styles/Orders.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { getOrders } from '../redux/orders/ordersSlice';
+import { getOrderById, getOrderItems, getOrders } from '../redux/orders/ordersSlice';
 import { useParams } from 'react-router-dom';
 
 const Orders = () => {
   
-  const { orders, isLoading } = useSelector((state) => state.orders);
+  const { orders, order_items, order, isLoading } = useSelector((state) => state.orders);
   const dispatch = useDispatch();
 
   const userId = useParams();
   const user_num = userId.userId;
 
+  const order_num = userId.orderId;
+
   useEffect(() => {
     dispatch(getOrders(user_num));
-  }, [dispatch, user_num]);
+    dispatch(getOrderItems(user_num, order_num));
+    dispatch(getOrderById(user_num, order_num));
+  }, [dispatch, user_num, order_num]);
   
   if (isLoading) return <div>Loading...</div>;
 
@@ -53,7 +57,7 @@ const Orders = () => {
                 </td>
               </tr>
                 )
-            })}
+          })}
         </table>
         <section className="order-details">
           <table>
@@ -63,75 +67,23 @@ const Orders = () => {
                   <th>Amount</th>
               </tr>
           </thead>
+              {order_items.map((orderitem) => {
+            return ( 
               <tr>
                 <td>
-                Item Description
+                {orderitem.id}
                 </td>
                 <td>
-                  15
+                {orderitem.price}
                 </td>
               </tr>
-              <tr>
-                <td>
-                Item Description
-                </td>
-                <td>
-                  15
-                </td>
-              </tr>
-              <tr>
-                <td>
-                Item Description
-                </td>
-                <td>
-                  15
-                </td>
-              </tr>
-              <tr>
-                <td>
-                Item Description
-                </td>
-                <td>
-                  15
-                </td>
-              </tr>
-              <tr>
-                <td>
-                Item Description
-                </td>
-                <td>
-                  15
-                </td>
-              </tr>
-              <tr>
-                <td>
-                Item Description
-                </td>
-                <td>
-                  15
-                </td>
-              </tr>
-              <tr>
-                <td>
-                Item Description
-                </td>
-                <td>
-                  15
-                </td>
-              </tr>
-              <tr>
-                <td>
-                Item Description
-                </td>
-                <td>
-                  15
-                </td>
-              </tr>
+                )
+            })}
               <td>
                 TOTAL:
               </td>
               <td>
-                244
+                {order.total}
               </td>
         </table>
         </section>
