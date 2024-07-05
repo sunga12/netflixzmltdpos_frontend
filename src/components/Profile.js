@@ -1,26 +1,40 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../styles/Profile.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { getUserbyId, getUsers } from '../redux/users/usersSlice';
+import { useParams } from 'react-router-dom';
 
-const Profile = ({
-  id, username, role, fullname,
-}) => {
+const Profile = () => {
+
+  const {user, isLoading}  = useSelector((state) => state.users);
+  const dispatch = useDispatch();
+  const userId = useParams();
+  const user_num = userId.userId;
+  
+  useEffect(() => {
+    dispatch(getUsers());
+    dispatch(getUserbyId(user_num));
+  }, [dispatch, user_num]);
+
+  if (isLoading) return <div>Loading...</div>;
+
   return (
     <div>
       <h1>Profile</h1>
-      
       <section className="profile">
         <section className="details">
           <div>
-            Profile Pic
+            Profile Pic:
             <div>
               Username:
-            {username}
+            {user.username}
           </div>
           </div>
+          
           <div>
             <ul>
-              <li>Fullname: {fullname}</li>
-              <li>Role: {role}</li>
+              <li>Fullname: {user.fullname}</li>
+              <li>Role: {user.role}</li>
             </ul>
             <button>
               EDIT PROFILE

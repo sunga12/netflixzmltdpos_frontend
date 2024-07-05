@@ -180,9 +180,9 @@ const Orders = () => {
                   15
                 </td>
               </tr>
-              <tc>
+              <td>
                 TOTAL:
-              </tc>
+              </td>
               <td>
                 244
               </td>

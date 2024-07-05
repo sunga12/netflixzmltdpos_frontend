@@ -1,3 +1,4 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Inventory from './components/Inventory';
 import Navigation from './components/Navigation';
@@ -9,10 +10,12 @@ function App() {
   return (
     <div className="App">
       <Navigation />
-      <Inventory />
-      <Orders />
-      <Profile />
-      <UserMain />
+      <Routes>
+        <Route path="/" element={<UserMain />} />
+        <Route path="/users/:userId" element={<Profile />} />
+        <Route path="/users/orders" element={<Orders />} />
+        <Route path="/inventory" element={<Inventory />} />
+      </Routes>
     </div>
   );
 }
